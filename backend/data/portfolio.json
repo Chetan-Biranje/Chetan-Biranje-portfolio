@@ -1,0 +1,333 @@
+{
+  "profile": {
+    "firstName": "Chetan",
+    "lastName": "Biranje",
+    "fullName": "Chetan Biranje (Chandrakant)",
+    "headline": "DFIR Enthusiast | Digital Forensics & Incident Response | SOC & Blue Team Operations | Windows & Network Forensics | Cybersecurity Researcher",
+    "location": {
+      "city": "Pimpri Chinchwad",
+      "region": "Pune",
+      "state": "Maharashtra",
+      "country": "India",
+      "postalCode": "411017"
+    },
+    "email": [
+      "chetanbiranje@proton.me",
+      "chetanchandrakantbiranje@gmail.com"
+    ],
+    "portfolio": "https://chetan-biranje.github.io/Chetan-biranje-portfolio/",
+    "summary": "Cybersecurity enthusiast focused on Digital Forensics and Incident Response (DFIR), Security Operations (SOC), and Threat Detection. Currently pursuing BCA. Areas of interest include DFIR, Windows & Linux Forensics, Windows Event Log and Sysmon Analysis, Network Forensics and PCAP Analysis, Memory Forensics, Threat Hunting, SIEM Monitoring (Splunk, Microsoft Sentinel), Malware Analysis Fundamentals, Security Monitoring and Detection Engineering, and Python for Security Automation. Open to Cybersecurity Intern, SOC Analyst, DFIR Intern, Incident Response Intern, Blue Team Analyst, and Entry-Level Security Analyst opportunities.",
+    "openTo": [
+      "Cybersecurity Intern",
+      "SOC Analyst",
+      "DFIR Intern",
+      "Incident Response Intern",
+      "Blue Team Analyst",
+      "Entry-Level Security Analyst"
+    ],
+    "languages": [
+      { "language": "Marathi", "proficiency": "Full Professional" },
+      { "language": "English", "proficiency": "Full Professional" },
+      { "language": "Hindi", "proficiency": "Full Professional" },
+      { "language": "Kannada", "proficiency": "Limited Working" }
+    ]
+  },
+
+  "skills": {
+    "Digital Forensics": [
+      "Forensic Services",
+      "Electronic Evidence",
+      "Forensic Toolkit (FTK)",
+      "Forensic Consulting",
+      "Data Forensics",
+      "Digital Forensics",
+      "Network Forensics",
+      "Windows Forensic"
+    ],
+    "Security & Defense": [
+      "Information Security Analysis",
+      "Internet Security",
+      "Security Architecture Design",
+      "Integrated Security Systems",
+      "Security Implementation",
+      "Cybersecurity",
+      "Security Incident Response",
+      "Incident Response"
+    ],
+    "Threat & Vulnerability Management": [
+      "Vulnerability Scanning",
+      "OWASP",
+      "Threat & Vulnerability Management",
+      "Threat Analysis",
+      "Red Teaming"
+    ],
+    "Tools & Technologies": [
+      "Sysmon",
+      "Splunk",
+      "Metasploit",
+      "Linux",
+      "Python",
+      "Log Analysis",
+      "CI/CD"
+    ],
+    "Standards & Compliance": [
+      "PCI DSS"
+    ]
+  },
+
+  "experience": [
+    {
+      "id": 1,
+      "company": "ShadowFox",
+      "role": "Cybersecurity Intern",
+      "startDate": "Oct 2026",
+      "endDate": "Present",
+      "current": true,
+      "description": "Virtual Cybersecurity Internship focused on hands-on security training, vulnerability assessment, and security operations.",
+      "type": "cybersecurity"
+    },
+    {
+      "id": 2,
+      "company": "NETWORKWALKS",
+      "role": "Cybersecurity Intern",
+      "startDate": "Oct 2026",
+      "endDate": "Present",
+      "current": true,
+      "description": "Working on network security, vulnerability assessment, and penetration testing in a professional cybersecurity environment.",
+      "type": "cybersecurity"
+    },
+    {
+      "id": 3,
+      "company": "CodeAlpha",
+      "role": "Cyber Security Intern",
+      "startDate": "Oct 2026",
+      "endDate": "Present",
+      "current": true,
+      "description": "Virtual cybersecurity internship involving security analysis, threat detection, and security tool development.",
+      "type": "cybersecurity"
+    },
+    {
+      "id": 4,
+      "company": "HackerOne",
+      "role": "Bug Bounty Researcher",
+      "startDate": "Jun 2025",
+      "endDate": "Present",
+      "current": true,
+      "description": "Conducting web application and API security assessments. Identifying and responsibly disclosing vulnerabilities through the HackerOne bug bounty platform.",
+      "type": "cybersecurity"
+    },
+    {
+      "id": 5,
+      "company": "Shridhar Plastic & Fabricator",
+      "role": "Site Engineer",
+      "startDate": "Aug 2026",
+      "endDate": "Present",
+      "current": true,
+      "description": "Overseeing on-site engineering operations and project coordination.",
+      "type": "engineering"
+    },
+    {
+      "id": 6,
+      "company": "Jio Platforms Limited",
+      "role": "Jio Fiber Executive",
+      "startDate": "Jul 2024",
+      "endDate": "Present",
+      "current": true,
+      "description": "Serving as a field executive for Jio Fiber, managing installations, customer service, and network connectivity operations.",
+      "type": "telecom"
+    },
+    {
+      "id": 7,
+      "company": "Mahalaxmi Communication",
+      "role": "Field Sales Executive",
+      "startDate": "Jun 2021",
+      "endDate": "May 2023",
+      "current": false,
+      "description": "Promoted telecom services, managed customer relationships, and drove sales targets in the field.",
+      "type": "telecom"
+    }
+  ],
+
+  "education": [
+    {
+      "id": 1,
+      "institution": "DY Patil University",
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "field": "Cyber Security",
+      "startDate": "Jul 2025",
+      "endDate": "Present",
+      "current": true
+    },
+    {
+      "id": 2,
+      "institution": "Sant Gajanan Maharaj Rural Polytechnic College Mahagaov",
+      "degree": "Diploma of Education",
+      "field": "General Studies",
+      "startDate": "Jul 2020",
+      "endDate": "May 2022",
+      "current": false
+    },
+    {
+      "id": 3,
+      "institution": "Dr. Ghali College, Gadhinglaj",
+      "degree": "High School Diploma",
+      "field": "General Studies",
+      "startDate": "Jun 2019",
+      "endDate": "May 2020",
+      "current": false
+    }
+  ],
+
+  "projects": [
+    {
+      "id": 1,
+      "name": "DevSecOps Learning Lab",
+      "description": "A comprehensive DevSecOps lab environment for learning CI/CD security practices. Covers Static Application Security Testing (SAST), Software Composition Analysis (SCA), secrets scanning, and container security.",
+      "tags": ["DevSecOps", "CI/CD", "SAST", "SCA", "Container Security", "Secrets Scanning"]
+    },
+    {
+      "id": 2,
+      "name": "Security Recon Toolkit",
+      "description": "Python-based security automation and reconnaissance toolkit for streamlining information gathering, enumeration, and security assessments.",
+      "tags": ["Python", "Automation", "Reconnaissance", "Security"]
+    },
+    {
+      "id": 3,
+      "name": "PySecUtils",
+      "description": "A security utility library providing reusable Python modules for common security operations, vulnerability checks, and security automation tasks.",
+      "tags": ["Python", "Security", "Utilities", "Library"]
+    },
+    {
+      "id": 4,
+      "name": "Web App Pentest Framework",
+      "description": "A structured web application penetration testing framework with reusable security testing utilities and automated vulnerability scanning capabilities.",
+      "tags": ["Pentesting", "Web Security", "Framework", "Automation"]
+    },
+    {
+      "id": 5,
+      "name": "Secure CI/CD Pipeline",
+      "description": "A production-ready CI/CD pipeline built with GitHub Actions, incorporating security gates at every stage including code scanning, dependency auditing, and deployment controls.",
+      "tags": ["GitHub Actions", "CI/CD", "Security Gates", "DevSecOps"]
+    },
+    {
+      "id": 6,
+      "name": "Web & REST API Pentest Research",
+      "description": "In-depth research on API vulnerabilities, authentication and authorization flaws, and security testing methodologies for web and REST APIs.",
+      "tags": ["API Security", "REST", "Authentication", "Authorization", "Research"]
+    }
+  ],
+
+  "certifications": [
+    {
+      "id": 1,
+      "name": "Maharashtra State Certificate in Information Technology",
+      "issuer": "Maharashtra State Board",
+      "date": "May 2018"
+    },
+    {
+      "id": 2,
+      "name": "Cyber Security Intern Certificate",
+      "issuer": "Codec Technologies India",
+      "date": "Dec 2025"
+    },
+    {
+      "id": 3,
+      "name": "Python Developer Intern",
+      "issuer": "Codec Technologies India",
+      "date": "Dec 2025"
+    },
+    {
+      "id": 4,
+      "name": "Application Security Training",
+      "issuer": "DevTown",
+      "date": "Dec 2025"
+    },
+    {
+      "id": 5,
+      "name": "Fundamentals of Dark Web",
+      "issuer": "ULSA",
+      "date": "Dec 2025"
+    },
+    {
+      "id": 6,
+      "name": "Threat Intelligence Fundamentals for SOC Analysts",
+      "issuer": "ULSA",
+      "date": "Dec 2025"
+    },
+    {
+      "id": 7,
+      "name": "Dark Web Crash Course",
+      "issuer": "ULSA",
+      "date": "Dec 2025"
+    },
+    {
+      "id": 8,
+      "name": "Linux 100: Fundamentals",
+      "issuer": "TCM Security",
+      "date": "Jan 2026"
+    },
+    {
+      "id": 9,
+      "name": "Soft Skills for the Job Market",
+      "issuer": "TCM Security",
+      "date": "Mar 2026"
+    },
+    {
+      "id": 10,
+      "name": "Red Team Mastery: Advanced Offensive Security",
+      "issuer": "Udemy",
+      "date": "Mar 2026"
+    },
+    {
+      "id": 11,
+      "name": "GCP DevOps: Terraform IaC & Azure DevOps CI/CD Masterclass",
+      "issuer": "Udemy",
+      "date": "Jun 2026"
+    },
+    {
+      "id": 12,
+      "name": "Become a Hydra Expert: Advanced Brute Forcing",
+      "issuer": "Udemy",
+      "date": "Jun 2026"
+    },
+    {
+      "id": 13,
+      "name": "Cybersecurity + Hack Real-Time Web App",
+      "issuer": "ElevanceSkills",
+      "date": "Apr 2026"
+    }
+  ],
+
+  "volunteering": [
+    {
+      "id": 1,
+      "organization": "GitHub Community GITAM",
+      "role": "Open Source Security Contributor",
+      "description": "Contributing to open source security projects and fostering community collaboration around secure coding practices."
+    },
+    {
+      "id": 2,
+      "organization": "Cybersecurity Community",
+      "role": "Security Awareness Volunteer",
+      "startDate": "Jan 2025",
+      "description": "Volunteering to raise cybersecurity awareness, educating individuals and organizations on digital safety and threat prevention."
+    }
+  ],
+
+  "organizations": [
+    {
+      "id": 1,
+      "name": "OWASP Foundation",
+      "role": "Member",
+      "startDate": "Jul 2025",
+      "description": "Active member of the Open Web Application Security Project, contributing to web application security standards and community initiatives."
+    },
+    {
+      "id": 2,
+      "name": "Bug Bounty Platform Community",
+      "role": "Security Researcher",
+      "startDate": "Nov 2025",
+      "description": "Engaged in responsible vulnerability disclosure and security research across multiple bug bounty platforms."
+    }
+  ]
+}
