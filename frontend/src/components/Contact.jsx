@@ -60,9 +60,12 @@ const Contact = () => {
       return;
     }
 
+    const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/contact';
+
+    // 1. Try custom backend API first (local or deployed)
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData, {
-        timeout: 6000,
+      const response = await axios.post(backendUrl, formData, {
+        timeout: 4000,
       });
 
       setStatus({
@@ -70,27 +73,48 @@ const Contact = () => {
         message: response.data?.message || 'Message sent successfully! Chetan will get back to you soon.',
       });
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.warn('Backend API submission:', error);
+      setIsSubmitting(false);
+      return;
+    } catch (backendError) {
+      console.warn('Backend API unavailable, falling back to direct secure email gateway...', backendError.message);
+    }
 
-      // Extract detailed error if server responded
-      if (error.response?.data?.message) {
+    // 2. Fallback: Direct delivery to Chetan's inbox via FormSubmit (No backend server required!)
+    try {
+      const formSubmitRes = await axios.post(
+        'https://formsubmit.co/ajax/chetanchandrakantbiranje@gmail.com',
+        {
+          name: formData.name,
+          email: formData.email,
+          _subject: `[Portfolio Inquiry] ${formData.subject}`,
+          _cc: 'chetanbiranje@proton.me',
+          _template: 'table',
+          message: formData.message,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          timeout: 8000,
+        }
+      );
+
+      if (formSubmitRes.data?.success === 'true' || formSubmitRes.status === 200) {
         setStatus({
-          type: 'error',
-          message: error.response.data.message,
+          type: 'success',
+          message: 'Message delivered directly to Chetan\'s email inbox! I will get back to you soon.',
         });
-      } else if (error.code === 'ERR_NETWORK' || !error.response) {
-        // Backend server is not running on port 5000
-        setStatus({
-          type: 'fallback',
-          message: 'The local backend server is not running (run "npm start" in backend folder). Click below to send directly via Email:',
-        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        setStatus({
-          type: 'error',
-          message: 'Failed to send message. Please reach out directly to chetanbiranje@proton.me.',
-        });
+        throw new Error('Fallback delivery did not confirm');
       }
+    } catch (fallbackError) {
+      console.warn('Fallback email gateway error:', fallbackError);
+      setStatus({
+        type: 'fallback',
+        message: 'Could not connect to automated email services. Click below to send directly using your Email App:',
+      });
     } finally {
       setIsSubmitting(false);
     }
