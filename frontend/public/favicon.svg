@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="cyberGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#00e5ff"/>
+    </linearGradient>
+  </defs>
+  <path d="M50 8 L85 24 V52 C85 74 50 92 50 92 C50 92 15 74 15 52 V24 Z" fill="#080c16" stroke="url(#cyberGlow)" stroke-width="4"/>
+  <text x="50" y="58" font-family="'Courier New', monospace" font-size="28" font-weight="900" fill="#00ff88" text-anchor="middle">CB</text>
+</svg>

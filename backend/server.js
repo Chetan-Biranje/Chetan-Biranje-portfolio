@@ -21,14 +21,20 @@ app.use(helmet());
 // CORS configuration
 const allowedOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim())
-  : ['http://localhost:3000', 'http://localhost:5173'];
+  : ['http://localhost:3000', 'http://localhost:5173', 'https://chetanbiranje.vercel.app'];
 
 app.use(
   cors({
     origin: function (origin, callback) {
       // Allow requests with no origin (mobile apps, curl, Postman, etc.)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
+
+      // Check explicit allowed origins or any vercel.app preview deployment
+      if (
+        allowedOrigins.includes(origin) ||
+        origin.endsWith('.vercel.app') ||
+        origin.includes('localhost')
+      ) {
         return callback(null, true);
       }
       return callback(new Error('Not allowed by CORS'));

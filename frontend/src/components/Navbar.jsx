@@ -162,14 +162,17 @@ const Navbar = () => {
                 </ScrollLink>
               ))}
               <div className="pt-4 px-4">
-                <a
-                  href="#contact"
+                <ScrollLink
+                  to="contact"
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
                   className="block text-center px-4 py-3 text-sm font-mono border border-cyber-green-500 text-cyber-green-500 rounded-lg
-                             hover:bg-cyber-green-500/10 transition-all duration-300"
+                             hover:bg-cyber-green-500/10 transition-all duration-300 cursor-pointer"
                   onClick={() => setIsMobileOpen(false)}
                 >
                   Hire Me
-                </a>
+                </ScrollLink>
               </div>
             </div>
           </motion.div>
