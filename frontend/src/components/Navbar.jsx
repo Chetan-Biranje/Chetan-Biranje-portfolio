@@ -6,11 +6,13 @@ import ResumeModal from './ResumeModal';
 
 const navLinks = [
   { name: 'Home', to: 'home' },
+  { name: 'Terminal', to: 'terminal' },
   { name: 'About', to: 'about' },
   { name: 'Skills', to: 'skills' },
-  { name: 'Experience', to: 'experience' },
+  { name: 'Defense', to: 'defense' },
   { name: 'Projects', to: 'projects' },
-  { name: 'Certifications', to: 'certifications' },
+  { name: 'Writeups', to: 'writeups' },
+  { name: 'Certs', to: 'certifications' },
   { name: 'Contact', to: 'contact' },
 ];
 

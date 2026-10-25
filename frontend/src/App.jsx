@@ -6,10 +6,14 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import DefenseMatrix from './components/DefenseMatrix';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
+import CaseStudies from './components/CaseStudies';
 import Education from './components/Education';
 import Certifications from './components/Certifications';
+import BadgesSection from './components/BadgesSection';
+import CyberTerminal from './components/CyberTerminal';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -29,12 +33,20 @@ function App() {
             <Hero />
           </section>
 
+          <section id="terminal">
+            <CyberTerminal />
+          </section>
+
           <section id="about">
             <About />
           </section>
 
           <section id="skills">
             <Skills />
+          </section>
+
+          <section id="defense">
+            <DefenseMatrix />
           </section>
 
           <section id="experience">
@@ -45,12 +57,20 @@ function App() {
             <Projects />
           </section>
 
+          <section id="writeups">
+            <CaseStudies />
+          </section>
+
           <section id="education">
             <Education />
           </section>
 
           <section id="certifications">
             <Certifications />
+          </section>
+
+          <section id="badges">
+            <BadgesSection />
           </section>
 
           <section id="contact">
