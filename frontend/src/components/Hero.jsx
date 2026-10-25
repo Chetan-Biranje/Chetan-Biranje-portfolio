@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { Link as ScrollLink } from 'react-scroll';
@@ -13,13 +13,28 @@ import {
   FaAward,
   FaMapMarkerAlt,
   FaCheckCircle,
+  FaFileAlt,
+  FaCopy,
+  FaCheck,
 } from 'react-icons/fa';
 import { SiHackerone } from 'react-icons/si';
 import ParticleBackground from './ParticleBackground';
+import ResumeModal from './ResumeModal';
 
 const Hero = () => {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('chetanbiranje@proton.me');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 lg:pt-0">
+      {/* Resume Modal */}
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
       {/* Background Particle Animation */}
       <ParticleBackground />
 
@@ -131,19 +146,27 @@ const Hero = () => {
                 Explore Projects
               </ScrollLink>
 
+              <button
+                onClick={() => setIsResumeOpen(true)}
+                className="px-6 py-3.5 rounded-xl bg-dark-800/80 hover:bg-dark-700/80 border border-cyber-cyan-500/40 hover:border-cyber-cyan-400 text-cyber-cyan-300 font-medium text-sm backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2"
+              >
+                <FaFileAlt className="text-cyber-cyan-400" />
+                Resume / CV
+              </button>
+
               <ScrollLink
                 to="contact"
                 smooth={true}
                 duration={500}
                 offset={-80}
-                className="px-6 py-3.5 rounded-xl bg-dark-800/80 hover:bg-dark-700/80 border border-cyber-green-500/30 hover:border-cyber-green-500 text-white font-medium text-sm backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2"
+                className="px-6 py-3.5 rounded-xl bg-dark-800/80 hover:bg-dark-700/80 border border-gray-700 hover:border-cyber-green-500 text-white font-medium text-sm backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2"
               >
                 <FaEnvelope className="text-cyber-green-400" />
                 Get In Touch
               </ScrollLink>
             </div>
 
-            {/* Social Icons */}
+            {/* Social Icons & 1-Click Copy */}
             <div className="flex items-center gap-3 pt-2">
               <span className="text-xs font-mono text-gray-500 mr-2">CONNECT:</span>
               <a
@@ -173,6 +196,23 @@ const Hero = () => {
               >
                 <SiHackerone size={18} />
               </a>
+              <button
+                onClick={handleCopyEmail}
+                className="relative px-3 py-2 rounded-lg bg-dark-800/60 hover:bg-cyber-green-500/20 border border-gray-800 hover:border-cyber-green-500 text-gray-300 hover:text-cyber-green-400 flex items-center gap-1.5 transition-all text-xs font-mono"
+                title="Click to copy email address"
+              >
+                {copied ? (
+                  <>
+                    <FaCheck className="text-cyber-green-400 text-xs" />
+                    <span className="text-cyber-green-400">Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <FaCopy className="text-xs" />
+                    <span>Copy Email</span>
+                  </>
+                )}
+              </button>
               <a
                 href="mailto:chetanbiranje@proton.me"
                 aria-label="Email"

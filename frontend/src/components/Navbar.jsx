@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
-import { FaShieldAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { FaShieldAlt, FaBars, FaTimes, FaFileAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import ResumeModal from './ResumeModal';
 
 const navLinks = [
   { name: 'Home', to: 'home' },
@@ -17,6 +18,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,8 +107,17 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Resume / Hire Me Button (Desktop) */}
-          <div className="hidden md:block">
+          {/* Resume / Hire Me Buttons (Desktop) */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={() => setIsResumeOpen(true)}
+              className="px-4 py-2 text-sm font-mono font-medium border border-cyber-cyan-500/40 text-cyber-cyan-400 rounded-lg
+                         hover:bg-cyber-cyan-500/10 hover:border-cyber-cyan-400 transition-all duration-300 flex items-center gap-1.5 cursor-pointer"
+            >
+              <FaFileAlt className="text-xs" />
+              Resume
+            </button>
+
             <ScrollLink
               to="contact"
               smooth={true}
@@ -161,7 +172,19 @@ const Navbar = () => {
                   {link.name}
                 </ScrollLink>
               ))}
-              <div className="pt-4 px-4">
+              <div className="pt-4 px-4 space-y-2">
+                <button
+                  onClick={() => {
+                    setIsMobileOpen(false);
+                    setIsResumeOpen(true);
+                  }}
+                  className="w-full text-center px-4 py-3 text-sm font-mono border border-cyber-cyan-500/50 text-cyber-cyan-400 rounded-lg
+                             hover:bg-cyber-cyan-500/10 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <FaFileAlt className="text-xs" />
+                  View Resume / CV
+                </button>
+
                 <ScrollLink
                   to="contact"
                   smooth={true}
@@ -178,6 +201,9 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Resume Modal */}
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </motion.nav>
   );
 };

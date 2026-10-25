@@ -1,0 +1,112 @@
+%PDF-1.4
+1 0 obj
+<< /Title (Chetan Biranje - Cybersecurity Resume)
+   /Author (Chetan Biranje)
+   /Creator (Antigravity Resume Builder) >>
+endobj
+2 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+4 0 obj
+<< /Type /Page
+   /Parent 3 0 R
+   /MediaBox [0 0 595 842]
+   /Contents 5 0 R
+   /Resources << /Font << /F1 6 0 R /F2 7 0 R >> >>
+>>
+endobj
+5 0 obj
+<< /Length 1200 >>
+stream
+BT
+/F1 22 Tf
+50 780 Td
+(CHETAN BIRANJE) Tj
+/F2 10 Tf
+0 -18 Td
+(DFIR Enthusiast | SOC & Blue Team Operations | Cybersecurity Researcher) Tj
+0 -14 Td
+(Location: Pune, Maharashtra, India | Email: chetanbiranje@proton.me | Web: chetanbiranje.vercel.app) Tj
+0 -18 Td
+(------------------------------------------------------------------------------------------------------------------------) Tj
+0 -16 Td
+/F1 12 Tf
+(PROFESSIONAL SUMMARY) Tj
+/F2 9 Tf
+0 -13 Td
+(Cybersecurity specialist focused on Digital Forensics & Incident Response (DFIR), SOC Operations, and Threat Detection.) Tj
+0 -11 Td
+(Currently pursuing Bachelor of Computer Applications (BCA) at DY Patil University with active hands-on lab experience) Tj
+0 -11 Td
+(in memory forensics, Windows Event Log and Sysmon analysis, PCAP traffic inspection, and bug bounty hunting.) Tj
+0 -18 Td
+/F1 12 Tf
+(TECHNICAL SKILLS) Tj
+/F2 9 Tf
+0 -13 Td
+(Forensics & Defense: FTK, Autopsy, Sysmon, Event Log Analysis, PCAP Network Forensics, Memory Analysis, SIEM (Splunk)) Tj
+0 -11 Td
+(Offensive & Web: Bug Bounty (HackerOne), Metasploit, Hydra, Burp Suite, OWASP Top 10, REST API Pentesting) Tj
+0 -11 Td
+(Tools & Platforms: Python for Security Automation, Linux CLI/Bash, Git, CI/CD Security, Docker, Cloud (GCP/Azure)) Tj
+0 -18 Td
+/F1 12 Tf
+(WORK EXPERIENCE & INTERNSHIPS) Tj
+/F2 9 Tf
+0 -13 Td
+(* ShadowFox - Virtual Cybersecurity Intern (Oct 2026 - Present)) Tj
+0 -11 Td
+(* NETWORKWALKS - Cybersecurity Intern (Oct 2026 - Present)) Tj
+0 -11 Td
+(* HackerOne - Bug Bounty Researcher (Jun 2025 - Present)) Tj
+0 -18 Td
+/F1 12 Tf
+(EDUCATION) Tj
+/F2 9 Tf
+0 -13 Td
+(Bachelor of Computer Applications (BCA) - Cyber Security | DY Patil University (2025 - Present)) Tj
+0 -11 Td
+(Diploma of Education | Sant Gajanan Maharaj Rural Polytechnic (2020 - 2022)) Tj
+0 -18 Td
+/F1 12 Tf
+(VERIFIED CERTIFICATIONS) Tj
+/F2 9 Tf
+0 -13 Td
+(* Linux 100: Fundamentals - TCM Security (2026)) Tj
+0 -11 Td
+(* Red Team Mastery: Advanced Offensive Security - Udemy (2026)) Tj
+0 -11 Td
+(* Become a Hydra Expert: Advanced Brute Forcing - Udemy (2026)) Tj
+0 -11 Td
+(* Threat Intelligence Fundamentals for SOC Analysts - ULSA (2025)) Tj
+0 -11 Td
+(* Application Security Training - DevTown (2025)) Tj
+0 -18 Td
+(Full Portfolio & Interactive Verification: https://chetanbiranje.vercel.app) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000125 00000 n 
+0000000174 00000 n 
+0000000233 00000 n 
+0000000378 00000 n 
+0000001633 00000 n 
+0000001712 00000 n 
+trailer
+<< /Size 8 /Root 2 0 R /Info 1 0 R >>
+startxref
+1786
+%%EOF
