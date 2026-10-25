@@ -1,10 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { FaTerminal, FaCircle, FaExpand, FaCompress, FaCopy, FaCheck } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  FaTerminal,
+  FaTimes,
+  FaCopy,
+  FaCheck,
+  FaExpand,
+  FaCompress,
+  FaShieldAlt,
+} from 'react-icons/fa';
 
-const CyberTerminal = () => {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: '-100px' });
+const CyberTerminal = ({ isOpen = true, onClose, isModal = false }) => {
   const terminalEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -14,13 +20,20 @@ const CyberTerminal = () => {
     { type: 'output', text: ' Type "help" to view all available DFIR & SOC commands.' },
     { type: 'output', text: ' Hint: There is a secret CTF flag hidden in this terminal... try finding it!' },
   ]);
-  const [historyIndex, setHistoryIndex] = useState(-1);
   const [commandHistory, setCommandHistory] = useState([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+  const [isCopied, setIsCopied] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
 
   useEffect(() => {
     terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [history]);
+
+  useEffect(() => {
+    if (isOpen) {
+      inputRef.current?.focus();
+    }
+  }, [isOpen]);
 
   const handleCommand = (cmd) => {
     const trimmed = cmd.trim();
@@ -57,8 +70,8 @@ Available Commands:
           type: 'output',
           text: `
 [+] Name: Chetan Biranje (Chandrakant)
-[+] Role: DFIR Enthusiast | SOC Analyst | Blue Team Operator | Cybersecurity Researcher
-[+] Education: BCA in Cyber Security @ DY Patil University
+[+] Role: DFIR Enthusiast | SOC Analyst | Blue Team Operator | Bug Bounty Researcher
+[+] Education: BCA in Cyber Security @ DY Patil University (2023-2026)
 [+] Location: Pune, Maharashtra, India
 [+] Status: Available for Internship & Entry-level SOC/DFIR positions
 `,
@@ -69,10 +82,21 @@ Available Commands:
         newHistory.push({
           type: 'output',
           text: `
-[DIGITAL FORENSICS]: FTK, Autopsy, Memory Forensics (Volatility), Windows Event Logs, Sysmon, Network PCAP (Wireshark)
-[SOC & DEFENSE]   : Splunk SIEM, Microsoft Sentinel, Threat Hunting, Vulnerability Management, PCI DSS
-[OFFENSIVE SEC]   : Bug Bounty (HackerOne), Metasploit, Hydra, Burp Suite, OWASP Top 10, REST API Pentesting
-[AUTOMATION]      : Python for Security, Bash/Linux, Docker, CI/CD Security, DevSecOps
+[+] DIGITAL FORENSICS:
+    - Volatility 3 (RAM Memory Dumps, Shellcode detection)
+    - FTK Imager (Physical Drive & Triage Acquisition)
+    - Wireshark / Tshark (PCAP TCP/UDP, DNS Tunneling, Beaconing)
+    - Windows Event Log Triaging (Security, System, PowerShell 4104)
+
+[+] SOC & BLUE TEAM:
+    - Splunk SIEM (SPL search syntax, Alerting rules, Log parsing)
+    - Sysmon (Process Creation ID 1, LSASS Access ID 10, Network ID 3)
+    - MITRE ATT&CK TTP Mapping & Incident Triage
+
+[+] OFFENSIVE & TOOLS:
+    - HackerOne Bug Bounty (BOLA, IDOR, Auth bypass)
+    - OWASP Top 10 | Burp Suite Professional | Metasploit
+    - Python Scripting | Bash | Linux System Admin
 `,
         });
         break;
@@ -81,14 +105,17 @@ Available Commands:
         newHistory.push({
           type: 'output',
           text: `
-[1] Linux 100: Fundamentals - TCM Security (2026)
-[2] Red Team Mastery: Advanced Offensive Security - Udemy (2026)
-[3] Become a Hydra Expert: Advanced Brute Forcing - Udemy (2026)
-[4] GCP DevOps: Terraform IaC & Azure DevOps - Udemy (2026)
-[5] Threat Intelligence for SOC Analysts - ULSA / Credsverse (2025)
-[6] Fundamentals of Dark Web - ULSA / Credsverse (2025)
-[7] Application Security Training - DevTown (2025)
-[8] MSCIT - Maharashtra State Board (2018)
+[+] Verified Certifications:
+    1. Linux 100: Fundamentals - TCM Security
+    2. Threat Intelligence for SOC Analysts - ULSA / Credsverse
+    3. Dark Web & Underground Intel - ULSA / Credsverse
+    4. Red Team Mastery: Advanced Offensive - Udemy
+    5. Hydra Expert: Brute Forcing - Udemy
+    6. GCP DevOps: Terraform & CI/CD - Udemy
+    7. Application Security Training - DevTown
+    8. Cybersecurity Intern - Codec Technologies
+    9. Python Developer Intern - Codec Technologies
+    10. Diploma in Computer Engineering - MSBTE (First Class Dist.)
 `,
         });
         break;
@@ -97,10 +124,13 @@ Available Commands:
         newHistory.push({
           type: 'output',
           text: `
-[>] DevSecOps Learning Lab   : CI/CD security gates, SAST, SCA, container scanning
-[>] Security Recon Toolkit   : Python automation for subdomain enum and port scans
-[>] PySecUtils               : Security library for network, crypto & forensic extraction
-[>] Web App Pentest Framework: Structured OWASP testing checklist and custom payloads
+[+] Top Projects:
+    1. DevSecOps Learning Lab (Docker, CI/CD, SAST, DAST)
+    2. Automated Security Recon Toolkit (Python, Nmap, DNS)
+    3. PySecUtils Forensics Suite (Artifact extraction & Hash verification)
+    4. Web App Pentest Framework (OWASP Checklist, Payloads)
+    5. Cobalt Strike Memory Dump Analysis Lab (Volatility 3)
+    6. DNS Exfiltration PCAP Investigation Lab (Wireshark)
 `,
         });
         break;
@@ -109,10 +139,10 @@ Available Commands:
         newHistory.push({
           type: 'output',
           text: `
-- ShadowFox      : Virtual Cybersecurity Intern (Oct 2026 - Present)
-- NETWORKWALKS   : Cybersecurity Intern (Oct 2026 - Present)
-- HackerOne      : Bug Bounty Researcher (Jun 2025 - Present)
-- CodeAlpha      : Cyber Security Intern (Oct 2026 - Present)
+[+] Career History:
+    - Cybersecurity Intern @ ShadowFox (Oct 2026 - Present)
+    - Cybersecurity Intern @ NETWORKWALKS (Oct 2026 - Present)
+    - Cyber Security Intern @ CodeAlpha (Oct 2026 - Present)
 `,
         });
         break;
@@ -121,10 +151,13 @@ Available Commands:
         newHistory.push({
           type: 'output',
           text: `
-[T1059] Execution       -> Detected via Sysmon Event ID 1 (Process Create) & PowerShell Script Block (ID 4104)
-[T1053] Persistence     -> Detected via Scheduled Task Creation (Security Event ID 4698)
-[T1003] Credential Dump -> Detected via LSASS memory read access (Sysmon ID 10) & Mimikatz signatures
-[T1071] C2 Traffic      -> Detected via Wireshark PCAP beaconing frequency & DNS tunnel analysis
+[+] MITRE ATT&CK Defense Matrix (Quick View):
+    - Initial Access (T1566): Email Gateway SPF/DKIM, WAF payload inspection
+    - Execution (T1059.001): Sysmon Event ID 1, PowerShell Event ID 4104
+    - Persistence (T1053.005): Windows Event ID 4698, Sysmon ID 13
+    - Defense Evasion (T1055): Volatility malfind, Sysmon ID 8
+    - Credential Access (T1003.001): Sysmon Event ID 10 (LSASS 0x1010)
+    - Exfiltration (T1048): DNS high-entropy TXT records, abnormal volume
 `,
         });
         break;
@@ -133,36 +166,33 @@ Available Commands:
         newHistory.push({
           type: 'output',
           text: `
-Email (Primary)   : chetanbiranje@proton.me
-Email (Secondary) : chetanchandrakantbiranje@gmail.com
-LinkedIn          : https://linkedin.com/in/chetanbiranje
-GitHub            : https://github.com/chetanbiranje
-HackerOne         : https://hackerone.com/chetanbiranje
-`,
-        });
-        break;
-
-      case 'cat flag.txt':
-      case 'flag':
-      case 'flag.txt':
-        newHistory.push({
-          type: 'output',
-          text: `
-========================================================================
-🎉 CONGRATULATIONS! YOU FOUND THE SECRET CTF EASTER EGG!
-🚩 FLAG: FLAG{chetan_biranje_dfir_specialist_ready_for_hire_2026}
-========================================================================
-Reward unlocked: Direct interview access! Send an email to chetanbiranje@proton.me
-with this flag in the subject for immediate priority response!
+[+] Contact Channels:
+    - Email: chetanbiranje@proton.me
+    - Secondary: chetanchandrakantbiranje@gmail.com
+    - LinkedIn: https://www.linkedin.com/in/chetan-biranje-2b5a36258/
+    - GitHub: https://github.com/Chetan-Biranje
+    - HackerOne: https://hackerone.com/chetanbiranje
 `,
         });
         break;
 
       case 'sudo':
-      case 'sudo su':
         newHistory.push({
           type: 'output',
-          text: '[-] Permission denied: Chetan Biranje is the only root administrator on this system! 😉',
+          text: `[!] Permission Denied: chetan is in the sudoers file, but incident response protocols require MFA confirmation!`,
+        });
+        break;
+
+      case 'cat flag.txt':
+        newHistory.push({
+          type: 'output',
+          text: `
+🚩 [CONGRATULATIONS - CTF FLAG DISCOVERED!]
+FLAG{chetan_biranje_dfir_specialist_ready_for_hire_2026}
+
+Proof that you understand command line reconnaissance.
+Ready to bring this curiosity and forensic mindset to your security team!
+`,
         });
         break;
 
@@ -174,8 +204,9 @@ with this flag in the subject for immediate priority response!
       default:
         newHistory.push({
           type: 'output',
-          text: `bash: command not found: ${trimmed}. Type "help" for a list of valid commands.`,
+          text: `zsh: command not found: ${trimmed}. Type "help" for a list of available commands.`,
         });
+        break;
     }
 
     setHistory(newHistory);
@@ -187,140 +218,172 @@ with this flag in the subject for immediate priority response!
       handleCommand(inputVal);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      if (commandHistory.length > 0) {
-        const nextIdx = historyIndex + 1;
-        if (nextIdx < commandHistory.length) {
-          setHistoryIndex(nextIdx);
-          setInputVal(commandHistory[commandHistory.length - 1 - nextIdx]);
-        }
-      }
+      if (commandHistory.length === 0) return;
+      const nextIndex =
+        historyIndex === -1 ? commandHistory.length - 1 : Math.max(0, historyIndex - 1);
+      setHistoryIndex(nextIndex);
+      setInputVal(commandHistory[nextIndex]);
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
-      if (historyIndex > 0) {
-        const nextIdx = historyIndex - 1;
-        setHistoryIndex(nextIdx);
-        setInputVal(commandHistory[commandHistory.length - 1 - nextIdx]);
-      } else if (historyIndex === 0) {
+      if (historyIndex === -1) return;
+      if (historyIndex < commandHistory.length - 1) {
+        const nextIndex = historyIndex + 1;
+        setHistoryIndex(nextIndex);
+        setInputVal(commandHistory[nextIndex]);
+      } else {
         setHistoryIndex(-1);
         setInputVal('');
       }
     }
   };
 
-  return (
-    <div className="py-16 md:py-24 bg-dark-500 relative overflow-hidden" ref={containerRef}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10"
-        >
-          <p className="font-mono text-xs uppercase tracking-widest text-cyber-green-400 mb-2">
-            &lt; Interactive CLI /&gt;
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Live Cyber{' '}
-            <span className="bg-gradient-to-r from-cyber-green-400 to-cyber-cyan-400 bg-clip-text text-transparent">
-              Terminal
-            </span>
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-cyber-green-500 to-cyber-cyan-500 mx-auto mt-3 rounded-full" />
-          <p className="text-gray-400 mt-3 text-xs sm:text-sm font-mono max-w-md mx-auto">
-            Recruiters & Engineers: Type commands directly to query skills, forensics matrix, or find the CTF flag.
-          </p>
-        </motion.div>
+  const copyOutput = () => {
+    const textToCopy = history
+      .map((item) => (item.type === 'input' ? `root@chetan:~# ${item.text}` : item.text))
+      .join('\n');
+    navigator.clipboard.writeText(textToCopy);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
-        {/* Terminal Window */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className={`rounded-2xl border border-cyber-green-500/30 bg-dark-900/95 shadow-2xl backdrop-blur-xl overflow-hidden transition-all duration-300 ${
-            isMaximized ? 'fixed inset-4 z-50 flex flex-col' : 'h-[460px] flex flex-col'
-          }`}
-          onClick={() => inputRef.current?.focus()}
-        >
-          {/* Top Bar */}
-          <div className="flex items-center justify-between px-4 py-3 bg-dark-950 border-b border-gray-800 select-none">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-red-500/90 inline-block" />
-              <span className="w-3 h-3 rounded-full bg-yellow-500/90 inline-block" />
-              <span className="w-3 h-3 rounded-full bg-green-500/90 inline-block" />
-              <span className="ml-2 font-mono text-xs text-gray-400">chetan@forensics-station:~ (zsh)</span>
-            </div>
+  if (!isOpen && isModal) return null;
 
-            <div className="flex items-center gap-3 text-xs text-gray-500 font-mono">
-              <span className="hidden sm:inline text-cyber-green-400/80">● SSH Connected</span>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsMaximized(!isMaximized);
-                }}
-                className="hover:text-cyber-green-400 transition-colors p-1"
-                title={isMaximized ? 'Minimize' : 'Maximize'}
-              >
-                {isMaximized ? <FaCompress size={12} /> : <FaExpand size={12} />}
-              </button>
-            </div>
+  const terminalContent = (
+    <div
+      className={`rounded-2xl border border-cyber-green-500/30 bg-dark-950/95 backdrop-blur-2xl overflow-hidden shadow-2xl flex flex-col font-mono ${
+        isMaximized
+          ? 'fixed inset-4 z-50'
+          : isModal
+          ? 'w-full max-w-4xl max-h-[85vh] h-[600px]'
+          : 'w-full h-[520px]'
+      }`}
+    >
+      {/* Title Bar */}
+      <div className="flex items-center justify-between px-4 py-3 bg-dark-900 border-b border-gray-800/80">
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
+            <span
+              onClick={onClose}
+              className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 cursor-pointer inline-block"
+              title="Close"
+            />
+            <span
+              onClick={() => setIsMaximized(!isMaximized)}
+              className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 cursor-pointer inline-block"
+              title="Toggle Size"
+            />
+            <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block" />
           </div>
+          <span className="ml-3 text-xs text-gray-400 font-semibold flex items-center gap-2">
+            <FaTerminal className="text-cyber-green-400 text-xs" />
+            chetan@dfir-workstation: ~ (zsh)
+          </span>
+        </div>
 
-          {/* Terminal Body */}
-          <div className="flex-1 p-4 sm:p-6 overflow-y-auto font-mono text-xs sm:text-sm leading-relaxed space-y-2 text-gray-300">
-            {history.map((item, idx) => (
-              <div key={idx}>
-                {item.type === 'input' ? (
-                  <div className="flex items-center gap-2 text-white">
-                    <span className="text-cyber-green-400">root@chetan:~#</span>
-                    <span className="text-cyber-cyan-300 font-semibold">{item.text}</span>
-                  </div>
-                ) : (
-                  <pre className="whitespace-pre-wrap font-mono text-gray-300 text-xs sm:text-sm text-opacity-90 pl-2 border-l border-cyber-green-500/20 py-0.5">
-                    {item.text}
-                  </pre>
-                )}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={copyOutput}
+            className="p-1.5 rounded hover:bg-white/5 text-gray-400 hover:text-white text-xs transition-colors"
+            title="Copy Output"
+          >
+            {isCopied ? <FaCheck className="text-cyber-green-400" /> : <FaCopy />}
+          </button>
+          <button
+            onClick={() => setIsMaximized(!isMaximized)}
+            className="p-1.5 rounded hover:bg-white/5 text-gray-400 hover:text-white text-xs transition-colors"
+            title={isMaximized ? 'Restore' : 'Maximize'}
+          >
+            {isMaximized ? <FaCompress /> : <FaExpand />}
+          </button>
+          {isModal && onClose && (
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded hover:bg-white/5 text-gray-400 hover:text-white text-xs transition-colors ml-1"
+            >
+              <FaTimes />
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Terminal Screen Body */}
+      <div
+        onClick={() => inputRef.current?.focus()}
+        className="flex-1 p-4 overflow-y-auto text-xs leading-relaxed space-y-2 text-gray-300 cursor-text scrollbar-thin"
+      >
+        {history.map((item, idx) => (
+          <div key={idx}>
+            {item.type === 'input' ? (
+              <div className="flex items-center gap-2 text-white">
+                <span className="text-cyber-green-400">root@chetan:~#</span>
+                <span className="text-cyber-cyan-300 font-semibold">{item.text}</span>
               </div>
-            ))}
-
-            {/* Live Input Line */}
-            <div className="flex items-center gap-2 pt-1 text-white">
-              <span className="text-cyber-green-400">root@chetan:~#</span>
-              <input
-                ref={inputRef}
-                type="text"
-                value={inputVal}
-                onChange={(e) => setInputVal(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent outline-none border-none text-cyber-cyan-300 font-mono text-xs sm:text-sm caret-cyber-green-400"
-                autoFocus
-                placeholder="Type 'help' and press Enter..."
-              />
-            </div>
-            <div ref={terminalEndRef} />
+            ) : (
+              <pre className="whitespace-pre-wrap font-mono text-gray-300 text-xs pl-2 border-l border-cyber-green-500/20 py-0.5">
+                {item.text}
+              </pre>
+            )}
           </div>
+        ))}
 
-          {/* Quick Command Pills at bottom */}
-          <div className="px-4 py-2.5 bg-dark-950/80 border-t border-gray-800/80 flex flex-wrap items-center gap-2 text-xs font-mono">
-            <span className="text-gray-500 text-[11px]">Quick click:</span>
-            {['help', 'whoami', 'skills', 'certs', 'defense', 'cat flag.txt', 'clear'].map((cmd) => (
-              <button
-                key={cmd}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleCommand(cmd);
-                }}
-                className="px-2.5 py-1 rounded bg-dark-800 hover:bg-cyber-green-500/20 border border-gray-800 hover:border-cyber-green-500/50 text-gray-400 hover:text-cyber-green-400 transition-all text-[11px]"
-              >
-                ${cmd}
-              </button>
-            ))}
-          </div>
-        </motion.div>
+        {/* Input prompt */}
+        <div className="flex items-center gap-2 pt-1 text-white">
+          <span className="text-cyber-green-400">root@chetan:~#</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex-1 bg-transparent outline-none border-none text-cyber-cyan-300 font-mono text-xs caret-cyber-green-400"
+            autoFocus
+            placeholder="Type 'help' and press Enter..."
+          />
+        </div>
+        <div ref={terminalEndRef} />
+      </div>
+
+      {/* Quick click pill bar */}
+      <div className="px-4 py-2.5 bg-dark-900/90 border-t border-gray-800/80 flex flex-wrap items-center gap-1.5 text-xs">
+        <span className="text-gray-500 text-[10px]">Commands:</span>
+        {['help', 'whoami', 'skills', 'certs', 'defense', 'cat flag.txt', 'clear'].map(
+          (cmd) => (
+            <button
+              key={cmd}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCommand(cmd);
+              }}
+              className="px-2 py-0.5 rounded bg-dark-800 hover:bg-cyber-green-500/20 border border-gray-800 hover:border-cyber-green-500/40 text-gray-400 hover:text-cyber-green-400 transition-all text-[10px] cursor-pointer"
+            >
+              ${cmd}
+            </button>
+          )
+        )}
       </div>
     </div>
   );
+
+  if (isModal) {
+    return (
+      <AnimatePresence>
+        {isOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark-950/80 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              className="w-full flex justify-center"
+            >
+              {terminalContent}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    );
+  }
+
+  return terminalContent;
 };
 
 export default CyberTerminal;

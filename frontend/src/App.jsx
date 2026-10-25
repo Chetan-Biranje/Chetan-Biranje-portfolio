@@ -2,77 +2,45 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import ThreeBackground from './components/ThreeBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
+import CyberDossier from './components/CyberDossier';
 import DefenseMatrix from './components/DefenseMatrix';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import CaseStudies from './components/CaseStudies';
-import Education from './components/Education';
-import Certifications from './components/Certifications';
-import BadgesSection from './components/BadgesSection';
-import CyberTerminal from './components/CyberTerminal';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
   return (
     <Router>
-      <div className="relative min-h-screen bg-dark-500">
-        {/* Noise overlay for texture */}
+      <div className="relative min-h-screen bg-dark-950 text-gray-200 selection:bg-cyber-green-500/30 selection:text-cyber-green-400 overflow-x-hidden">
+        {/* Persistent 3D Interactive Three.js Universe */}
+        <ThreeBackground />
+
+        {/* Ambient Noise Texture */}
         <div className="noise-overlay" />
 
-        {/* Navigation */}
+        {/* Navigation Bar */}
         <Navbar />
 
-        {/* Main Content */}
-        <main>
+        {/* Main Streamlined Cyber Content */}
+        <main className="relative z-10">
+          {/* 01. Hero & Holographic Command */}
           <section id="home">
             <Hero />
           </section>
 
-          <section id="terminal">
-            <CyberTerminal />
+          {/* 02. Central Interactive Dossier (Skills, Projects, Career, Certs) */}
+          <section id="dossier">
+            <CyberDossier />
           </section>
 
-          <section id="about">
-            <About />
-          </section>
-
-          <section id="skills">
-            <Skills />
-          </section>
-
+          {/* 03. MITRE ATT&CK Tactical Defense Matrix */}
           <section id="defense">
             <DefenseMatrix />
           </section>
 
-          <section id="experience">
-            <Experience />
-          </section>
-
-          <section id="projects">
-            <Projects />
-          </section>
-
-          <section id="writeups">
-            <CaseStudies />
-          </section>
-
-          <section id="education">
-            <Education />
-          </section>
-
-          <section id="certifications">
-            <Certifications />
-          </section>
-
-          <section id="badges">
-            <BadgesSection />
-          </section>
-
+          {/* 04. Secure Transmissions & Contact */}
           <section id="contact">
             <Contact />
           </section>

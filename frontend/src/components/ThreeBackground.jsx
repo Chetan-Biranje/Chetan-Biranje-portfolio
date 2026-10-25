@@ -2,92 +2,95 @@ import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-// Floating rotating torus knot
+// Rotating wireframe Cyber Torus
 function CyberTorus() {
   const meshRef = useRef();
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.15;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.20;
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.12;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.18;
     }
   });
   return (
-    <mesh ref={meshRef} position={[3.5, 0, -2]} scale={0.6}>
-      <torusKnotGeometry args={[1, 0.3, 128, 16]} />
+    <mesh ref={meshRef} position={[3.8, 0.5, -2]} scale={0.65}>
+      <torusKnotGeometry args={[1, 0.28, 128, 16]} />
       <meshStandardMaterial
         color="#00ff88"
         wireframe={true}
-        opacity={0.12}
+        opacity={0.16}
         transparent={true}
         emissive="#00ff88"
-        emissiveIntensity={0.3}
+        emissiveIntensity={0.35}
       />
     </mesh>
   );
 }
 
+// Second Cyan Torus for deep perspective
 function CyberTorus2() {
   const meshRef = useRef();
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = -state.clock.elapsedTime * 0.10;
-      meshRef.current.rotation.z = state.clock.elapsedTime * 0.15;
+      meshRef.current.rotation.x = -state.clock.elapsedTime * 0.08;
+      meshRef.current.rotation.z = state.clock.elapsedTime * 0.14;
     }
   });
   return (
-    <mesh ref={meshRef} position={[-4, 1, -3]} scale={0.45}>
-      <torusKnotGeometry args={[1, 0.25, 100, 16]} />
+    <mesh ref={meshRef} position={[-4.2, -1, -3]} scale={0.5}>
+      <torusKnotGeometry args={[1, 0.22, 100, 16]} />
       <meshStandardMaterial
         color="#00e5ff"
         wireframe={true}
-        opacity={0.08}
+        opacity={0.12}
         transparent={true}
         emissive="#00e5ff"
-        emissiveIntensity={0.2}
-      />
-    </mesh>
-  );
-}
-
-function CyberIcosahedron() {
-  const meshRef = useRef();
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.3;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.2;
-    }
-  });
-  return (
-    <mesh ref={meshRef} position={[-2.5, -1.5, -1]} scale={0.5}>
-      <icosahedronGeometry args={[1, 1]} />
-      <meshStandardMaterial
-        color="#00a1ff"
-        wireframe={true}
-        opacity={0.10}
-        transparent={true}
-        emissive="#00a1ff"
         emissiveIntensity={0.25}
       />
     </mesh>
   );
 }
 
+// Spinning icosahedron
+function CyberIcosahedron() {
+  const meshRef = useRef();
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.25;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.18;
+    }
+  });
+  return (
+    <mesh ref={meshRef} position={[-2.8, 2.2, -1.5]} scale={0.55}>
+      <icosahedronGeometry args={[1, 1]} />
+      <meshStandardMaterial
+        color="#00a1ff"
+        wireframe={true}
+        opacity={0.14}
+        transparent={true}
+        emissive="#00a1ff"
+        emissiveIntensity={0.3}
+      />
+    </mesh>
+  );
+}
+
+// Floating octahedron
 function FloatingOctahedron() {
   const meshRef = useRef();
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.4;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.25;
-      meshRef.current.position.y = 2 + Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.35;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.22;
+      meshRef.current.position.y = 1.2 + Math.sin(state.clock.elapsedTime * 0.6) * 0.35;
     }
   });
   return (
-    <mesh ref={meshRef} position={[2, 2, -2]} scale={0.35}>
+    <mesh ref={meshRef} position={[2.6, 2.4, -2]} scale={0.4}>
       <octahedronGeometry args={[1, 0]} />
       <meshStandardMaterial
         color="#00ff88"
         wireframe={true}
-        opacity={0.15}
+        opacity={0.18}
         transparent={true}
         emissive="#00ff88"
         emissiveIntensity={0.4}
@@ -102,12 +105,12 @@ function StarField() {
 
   const geometry = useMemo(() => {
     const geo = new THREE.BufferGeometry();
-    const count = 2500;
+    const count = 2800;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      positions[i * 3]     = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      positions[i * 3]     = (Math.random() - 0.5) * 24;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 24;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 24;
     }
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     return geo;
@@ -117,10 +120,10 @@ function StarField() {
     () =>
       new THREE.PointsMaterial({
         color: '#00ff88',
-        size: 0.025,
+        size: 0.024,
         sizeAttenuation: true,
         transparent: true,
-        opacity: 0.55,
+        opacity: 0.65,
         depthWrite: false,
       }),
     []
@@ -128,8 +131,8 @@ function StarField() {
 
   useFrame((state) => {
     if (pointsRef.current) {
-      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.01;
-      pointsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.005) * 0.1;
+      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.012;
+      pointsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.006) * 0.08;
     }
   });
 
@@ -138,23 +141,16 @@ function StarField() {
 
 const ThreeBackground = () => {
   return (
-    <div
-      style={{
-        position: 'absolute',
-        inset: 0,
-        zIndex: 0,
-        pointerEvents: 'none',
-      }}
-    >
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
         style={{ background: 'transparent' }}
-        gl={{ alpha: true, antialias: true }}
+        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
         dpr={[1, 1.5]}
       >
-        <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} color="#00ff88" intensity={0.5} />
-        <pointLight position={[-10, -10, -10]} color="#00e5ff" intensity={0.3} />
+        <ambientLight intensity={0.4} />
+        <pointLight position={[10, 10, 10]} color="#00ff88" intensity={0.6} />
+        <pointLight position={[-10, -10, -10]} color="#00e5ff" intensity={0.4} />
         <StarField />
         <CyberTorus />
         <CyberTorus2 />
