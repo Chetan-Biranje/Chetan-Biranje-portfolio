@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "backend": "node backend/server.js",
-    "build": "echo 'Build successful'"
+    "build": "cd frontend && npm install && npm run build"
   },
   "dependencies": {
     "cors": "^2.8.5",
