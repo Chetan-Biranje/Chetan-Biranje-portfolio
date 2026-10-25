@@ -29,7 +29,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-dark-900/50 border-t border-cyber-green-500/10">
+    <footer className="relative border-t border-cyber-green-500/10 overflow-hidden" style={{ background: 'linear-gradient(180deg, rgba(2,12,27,0.8) 0%, rgba(1,5,12,1) 100%)' }}>
+      {/* Background Hex */}
+      <div className="absolute inset-0 hex-pattern opacity-20" />
+      {/* Top glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-1 bg-gradient-to-r from-transparent via-cyber-green-500/40 to-transparent" />
       {/* Back to Top */}
       <div className="absolute -top-5 left-1/2 -translate-x-1/2">
         <ScrollLink

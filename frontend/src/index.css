@@ -229,6 +229,325 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
+/* ========== 3D Card Tilt Effect ========== */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.1s ease;
+}
+
+.card-3d-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d:hover .card-3d-inner {
+  transform: translateZ(20px);
+}
+
+/* ========== Premium Glassmorphism ========== */
+.glass-premium {
+  background: rgba(6, 18, 36, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 255, 136, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(0, 255, 136, 0.04);
+}
+
+/* ========== 3D Perspective Section ========== */
+.perspective-section {
+  perspective: 2000px;
+  transform-style: preserve-3d;
+}
+
+/* ========== Glowing Orb ========== */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: orbFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.orb-green {
+  background: radial-gradient(circle, rgba(0,255,136,0.18) 0%, transparent 70%);
+}
+
+.orb-cyan {
+  background: radial-gradient(circle, rgba(0,229,255,0.15) 0%, transparent 70%);
+}
+
+.orb-blue {
+  background: radial-gradient(circle, rgba(0,161,255,0.12) 0%, transparent 70%);
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -30px) scale(1.1); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* ========== Magnetic Button ========== */
+.magnetic-btn {
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.2s ease;
+}
+
+.magnetic-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3),
+              0 0 40px rgba(0, 255, 136, 0.15);
+}
+
+.magnetic-btn:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* ========== Premium Section Divider ========== */
+.section-divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 255, 136, 0.3) 20%,
+    rgba(0, 229, 255, 0.5) 50%,
+    rgba(0, 255, 136, 0.3) 80%,
+    transparent 100%
+  );
+  overflow: visible;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 12px rgba(0,255,136,0.8), 0 0 24px rgba(0,255,136,0.4);
+}
+
+/* ========== 3D Floating Card ========== */
+.float-card {
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px) rotateX(0deg); }
+  50%       { transform: translateY(-12px) rotateX(2deg); }
+}
+
+/* ========== Neon Text Effect ========== */
+.neon-text {
+  color: #00ff88;
+  text-shadow:
+    0 0 7px rgba(0,255,136,0.9),
+    0 0 10px rgba(0,255,136,0.7),
+    0 0 21px rgba(0,255,136,0.5),
+    0 0 42px rgba(0,255,136,0.3),
+    0 0 82px rgba(0,255,136,0.1);
+}
+
+.neon-text-cyan {
+  color: #00e5ff;
+  text-shadow:
+    0 0 7px rgba(0,229,255,0.9),
+    0 0 10px rgba(0,229,255,0.7),
+    0 0 21px rgba(0,229,255,0.5),
+    0 0 42px rgba(0,229,255,0.3);
+}
+
+/* ========== Premium Skill Bar ========== */
+.skill-bar-track {
+  height: 5px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar-track::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,255,136,0.03), rgba(0,229,255,0.03));
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00ff88, #00e5ff, #00a1ff);
+  box-shadow: 0 0 10px rgba(0,255,136,0.6), 0 0 20px rgba(0,229,255,0.3);
+  position: relative;
+  transition: width 1.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 6px rgba(0,255,136,1), 0 0 12px rgba(0,255,136,0.6);
+}
+
+/* ========== Hex Grid Pattern ========== */
+.hex-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%2300ff88' fill-opacity='0.02' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L13.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ========== Enhanced Cyber Card ========== */
+.cyber-card-pro {
+  background: linear-gradient(135deg, 
+    rgba(6, 18, 36, 0.9) 0%, 
+    rgba(2, 12, 27, 0.95) 50%,
+    rgba(6, 18, 36, 0.85) 100%
+  );
+  border: 1px solid rgba(0, 255, 136, 0.08);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-card-pro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(0, 255, 136, 0.04),
+    rgba(0, 229, 255, 0.03),
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.cyber-card-pro:hover::before {
+  left: 160%;
+}
+
+.cyber-card-pro::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,255,136,0.2), transparent, rgba(0,229,255,0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.cyber-card-pro:hover::after {
+  opacity: 1;
+}
+
+.cyber-card-pro:hover {
+  border-color: rgba(0, 255, 136, 0.25);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 255, 136, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ========== Animated Border ========== */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(0,255,136,0.2); box-shadow: 0 0 10px rgba(0,255,136,0.1); }
+  50%       { border-color: rgba(0,229,255,0.3); box-shadow: 0 0 20px rgba(0,229,255,0.15); }
+}
+
+.border-animate {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* ========== 3D Hero Photo Frame ========== */
+.photo-frame-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+}
+
+.photo-frame-3d:hover {
+  transform: rotateY(-8deg) rotateX(5deg) translateZ(20px);
+  filter: drop-shadow(0 40px 80px rgba(0,255,136,0.2));
+}
+
+/* ========== Section Number Style ========== */
+.section-number {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(0, 255, 136, 0.5);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ========== Gradient Line Heading ========== */
+.heading-line {
+  position: relative;
+  display: inline-block;
+}
+
+.heading-line::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, #00ff88, #00e5ff, transparent);
+  border-radius: 2px;
+}
+
+/* ========== Scrollbar Premium ========== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #010a18;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ff88 0%, #00e5ff 50%, #00a1ff 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(0,255,136,0.4);
+}
+
+/* ========== Tag Pill ========== */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-family: monospace;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: 1px solid;
+  transition: all 0.3s ease;
+}
+
+.tag-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
 /* ========== Section Styles ========== */
 .section-heading {
   @apply text-3xl md:text-4xl font-bold text-white mb-2;
