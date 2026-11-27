@@ -140,6 +140,7 @@ router.post('/', async (req, res) => {
       process.env.SMTP_USER &&
       process.env.SMTP_PASS;
 
+    let emailForwarded = false;
     if (smtpConfigured) {
       try {
         const transporter = nodemailer.createTransport({
@@ -172,6 +173,7 @@ router.post('/', async (req, res) => {
         };
 
         await transporter.sendMail(mailOptions);
+        emailForwarded = true;
         console.log(`✅ Email forwarded successfully to ${process.env.CONTACT_EMAIL || 'chetanbiranje@proton.me'}`);
       } catch (emailErr) {
         console.warn('⚠️ SMTP send error (saved to messages.json instead):', emailErr.message);
@@ -180,7 +182,7 @@ router.post('/', async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: 'Message sent successfully! Chetan has received your message.'
+      message: emailForwarded ? 'Message saved and forwarded.' : 'Message saved successfully.',
     });
   } catch (error) {
     console.error('❌ Contact form error:', error.message);
