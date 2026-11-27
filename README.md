@@ -111,3 +111,5 @@ chetan-portfolio/
 ## Configuration and privacy
 
 Copy `backend/.env.example` to `backend/.env` for local configuration. Set `CORS_ORIGINS` to the exact frontend origins used by your deployment. Explicitly add preview origins when needed. Keep SMTP credentials and actual contact submissions out of source control. Review retention and access controls for stored messages before production use.
+
+Contact records are runtime data, not source code. Back up existing records securely before deploying this change. The application creates its local storage file when absent. Use restricted access and a retention policy; do not commit live submissions.
