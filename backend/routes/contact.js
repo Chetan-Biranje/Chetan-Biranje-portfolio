@@ -44,11 +44,14 @@ function sanitize(str) {
  */
 function validateContactForm(body) {
   const errors = [];
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return { valid: false, errors: ['A valid contact form is required.'] };
+  }
 
   if (!body.name || typeof body.name !== 'string' || body.name.trim().length < 2) {
     errors.push('Name is required and must be at least 2 characters long.');
   }
-  if (body.name && body.name.trim().length > 100) {
+  if (typeof body.name === 'string' && body.name.trim().length > 100) {
     errors.push('Name must be 100 characters or less.');
   }
 
@@ -59,14 +62,14 @@ function validateContactForm(body) {
   if (!body.subject || typeof body.subject !== 'string' || body.subject.trim().length < 2) {
     errors.push('Subject is required and must be at least 2 characters long.');
   }
-  if (body.subject && body.subject.trim().length > 200) {
+  if (typeof body.subject === 'string' && body.subject.trim().length > 200) {
     errors.push('Subject must be 200 characters or less.');
   }
 
   if (!body.message || typeof body.message !== 'string' || body.message.trim().length < 2) {
     errors.push('Message is required and must be at least 2 characters long.');
   }
-  if (body.message && body.message.trim().length > 5000) {
+  if (typeof body.message === 'string' && body.message.trim().length > 5000) {
     errors.push('Message must be 5000 characters or less.');
   }
 
@@ -127,14 +130,9 @@ router.post('/', async (req, res) => {
     };
 
     // Save to local message storage
-    saveMessageToFile(messageRecord);
-
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('📩 NEW CONTACT FORM SUBMISSION RECEIVED');
-    console.log(`  From:    ${name} <${email}>`);
-    console.log(`  Subject: ${subject}`);
-    console.log(`  Message: ${message}`);
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    if (!saveMessageToFile(messageRecord)) {
+      return res.status(503).json({ success: false, message: 'Could not save your message. Please try again later.' });
+    }
 
     // Check if SMTP is configured
     const smtpConfigured =
@@ -190,26 +188,6 @@ router.post('/', async (req, res) => {
       success: false,
       message: 'Internal server error. Please email directly at chetanbiranje@proton.me'
     });
-  }
-});
-
-/**
- * GET /api/contact/messages
- * Retrieves stored contact messages
- */
-router.get('/messages', (req, res) => {
-  try {
-    let messages = [];
-    if (fs.existsSync(MESSAGES_FILE)) {
-      messages = JSON.parse(fs.readFileSync(MESSAGES_FILE, 'utf8') || '[]');
-    }
-    res.json({
-      success: true,
-      count: messages.length,
-      messages
-    });
-  } catch (err) {
-    res.status(500).json({ success: false, message: 'Could not load messages' });
   }
 });
 
