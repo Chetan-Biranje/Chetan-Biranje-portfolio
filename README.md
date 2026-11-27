@@ -15,6 +15,7 @@ A modern, high-performance, full-stack portfolio website built specifically for 
 #### १. Backend सुरू करणे:
 ```bash
 cd backend
+npm ci
 npm start
 ```
 > Backend API चालू होईल: `http://localhost:5000`
@@ -22,6 +23,7 @@ npm start
 #### २. Frontend सुरू करणे:
 ```bash
 cd frontend
+npm ci
 npm start
 ```
 > Browser मध्ये Portfolio उघडेल: `http://localhost:3000`
@@ -42,7 +44,7 @@ npm start
 - **Node.js & Express.js** — Fast, lightweight RESTful API
 - **Helmet** — Enterprise-grade HTTP security headers
 - **CORS** — Cross-Origin Resource Sharing protection
-- **Express Rate Limit** — DDoS & brute-force protection
+- **Express Rate Limit** — Application-level request throttling (not complete DDoS protection)
 - **Nodemailer** — Contact form email delivery
 - **JSON Data Layer** — Easily customizable portfolio data
 
@@ -104,3 +106,8 @@ chetan-portfolio/
 | `GET` | `/api/volunteering`  | Open-source and community contributions |
 | `GET` | `/api/organizations` | OWASP, Bug bounty community |
 | `POST`| `/api/contact`       | Contact form validation & email delivery |
+
+
+## Configuration and privacy
+
+Copy `backend/.env.example` to `backend/.env` for local configuration. Set `CORS_ORIGINS` to the exact frontend origins used by your deployment. Explicitly add preview origins when needed. Keep SMTP credentials and actual contact submissions out of source control. Review retention and access controls for stored messages before production use.
